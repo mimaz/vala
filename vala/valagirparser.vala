@@ -2891,6 +2891,11 @@ public class Vala.GirParser : CodeVisitor {
 
 		Class cl;
 		var parent = reader.get_attribute ("parent");
+
+		if (parent == null) {
+			parent = "GLib.Object";
+		}
+
 		if (current.new_symbol) {
 			cl = new Class (current.name, current.source_reference);
 			cl.is_abstract = metadata.get_bool (ArgumentType.ABSTRACT, reader.get_attribute ("abstract") == "1");
